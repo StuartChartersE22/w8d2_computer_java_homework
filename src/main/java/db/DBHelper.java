@@ -110,7 +110,7 @@ public abstract class DBHelper {
         return results;
     }
 
-    protected static <T> List<T> findManyListToOne(Object oneObject, Class<T> manyObjectClass, String relationshipParameter){
+    protected static <T> List<T> findManyListForOne(Object oneObject, Class<T> manyObjectClass, String relationshipParameter){
         session = HibernateUtil.getSessionFactory().openSession();
         List<T> results = null;
 

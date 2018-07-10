@@ -8,6 +8,6 @@ import java.util.List;
 public class DBUser extends DBHelper {
 
     public static List<Folder> getFolders(User user){
-        return findManyListToOne(user, Folder.class, "user");
+        return findManyListForOne(user, Folder.class, "user");
     }
 }

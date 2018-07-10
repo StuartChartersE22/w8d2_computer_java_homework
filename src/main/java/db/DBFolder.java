@@ -16,7 +16,7 @@ public class DBFolder extends DBHelper {
     }
 
     public static List<File> getFiles(Folder folder){
-        return findManyListToOne(folder, File.class, "folder");
+        return findManyListForOne(folder, File.class, "folder");
     }
 
 }
