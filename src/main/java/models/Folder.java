@@ -31,7 +31,7 @@ public class Folder {
 
     @OneToMany(mappedBy = "folder", fetch = FetchType.LAZY)
     public List<File> getFiles() {
-        return files;
+        return this.files;
     }
 
     public void setName(String name) {
