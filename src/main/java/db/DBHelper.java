@@ -44,6 +44,34 @@ public abstract class DBHelper {
         return results;
     }
 
+    public static void update(Object object){
+        session = HibernateUtil.getSessionFactory().openSession();
+
+        try{transaction = session.beginTransaction();
+            session.update(object);
+            transaction.commit();
+        } catch (Throwable e) {
+            transaction.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+    }
+
+    public static void delete (Object object){
+        session = HibernateUtil.getSessionFactory().openSession();
+
+        try{transaction = session.beginTransaction();
+            session.delete(object);
+            transaction.commit();
+        } catch (Throwable e) {
+            transaction.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+    }
+
     protected static <T extends Object> T find(int id, Class<T> searchingClass){
         session = HibernateUtil.getSessionFactory().openSession();
         T result = null;

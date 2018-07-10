@@ -41,6 +41,11 @@ public class Runner {
 
         List<File> associatedFiles = DBFolder.getFiles(folder2);
 
+        folder1.setName("Desktop");
+        DBFolder.update(folder1);
+
+        DBFile.delete(file2);
+
         System.exit(0);
     }
 }
