@@ -10,11 +10,13 @@ public class Folder {
     private int id;
     private String name;
     private List<File> files;
+    private User user;
 
     public Folder(){}
 
-    public Folder(String name){
+    public Folder(String name, User user){
         this.name = name;
+        this.user = user;
     }
 
     @Column(name = "name")
@@ -34,6 +36,12 @@ public class Folder {
         return this.files;
     }
 
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    public User getUser() {
+        return user;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -44,5 +52,9 @@ public class Folder {
 
     public void setFiles(List<File> files) {
         this.files = files;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
