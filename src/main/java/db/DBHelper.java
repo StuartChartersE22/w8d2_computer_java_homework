@@ -110,9 +110,9 @@ public abstract class DBHelper {
         return results;
     }
 
-    protected static <T,R> List<T> findManyListToOne(R oneObject, Class<T> manyObjectClass, String manyColumnRelationshipTitle){
+    protected static <ONE, MANY> List<MANY> findManyListToOne(ONE oneObject, Class<MANY> manyObjectClass, String manyColumnRelationshipTitle){
         session = HibernateUtil.getSessionFactory().openSession();
-        List<T> results = null;
+        List<MANY> results = null;
 
         try {
             Criteria cr = session.createCriteria(manyObjectClass);
