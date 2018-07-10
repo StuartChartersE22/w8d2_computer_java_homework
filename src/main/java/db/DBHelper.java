@@ -5,6 +5,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
 import java.util.List;
@@ -110,7 +111,7 @@ public abstract class DBHelper {
         return results;
     }
 
-    protected static <T> List<T> findManyListForOne(Object oneObject, Class<T> manyObjectClass, String relationshipParameter){
+    protected static <T extends Object> List<T> findManyListForOne(Object oneObject, Class<T> manyObjectClass, String relationshipParameter){
         session = HibernateUtil.getSessionFactory().openSession();
         List<T> results = null;
 
@@ -127,4 +128,21 @@ public abstract class DBHelper {
         return results;
     }
 
+    protected static <T extends Object> double getAverageQuantity(String columnName, Class<T> searchingClass){
+        Double average = null;
+        session = HibernateUtil.getSessionFactory().openSession();
+
+        try{
+            transaction = session.beginTransaction();
+            Criteria cr = session.createCriteria(searchingClass);
+            cr.setProjection(Projections.avg(columnName));
+            average = (Double) cr.uniqueResult();
+        }catch (Throwable e){
+            transaction.rollback();
+            e.printStackTrace();
+        }finally {
+            session.close();
+        }
+        return average;
+    }
 }

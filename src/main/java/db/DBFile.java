@@ -17,4 +17,8 @@ public class DBFile extends DBHelper {
     public static List<File> orderBySize(){
         return orderByCriterion("size", File.class, false);
     }
+
+    public static double getAverageFileSize(){
+        return getAverageQuantity("size", File.class);
+    }
 }

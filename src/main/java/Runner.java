@@ -50,6 +50,8 @@ public class Runner {
         List<File> associatedFiles = DBFolder.getFiles(folder2);
         List<Folder> associatedFolders = DBUser.getFolders(user);
 
+        double averageFileSize = DBFile.getAverageFileSize();
+
         folder1.setName("Desktop");
         DBFolder.update(folder1);
 
