@@ -49,6 +49,10 @@ public class File {
         return folder;
     }
 
+//    public User getUser(){
+//        return this.folder.getUser();
+//    }
+
     public void setId(int id) {
         this.id = id;
     }
