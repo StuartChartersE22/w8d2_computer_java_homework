@@ -1,10 +1,12 @@
 package models;
 
+import db.IDB;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "files")
-public class File {
+public class File implements IDB {
 
     private int id;
     private String name;
@@ -48,10 +50,6 @@ public class File {
     public Folder getFolder() {
         return folder;
     }
-
-//    public User getUser(){
-//        return this.folder.getUser();
-//    }
 
     public void setId(int id) {
         this.id = id;

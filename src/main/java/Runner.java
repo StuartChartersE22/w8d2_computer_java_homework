@@ -41,7 +41,7 @@ public class Runner {
 
         File foundFile = DBFile.find(file3.getId());
         User foundFileUser = foundFile.getFolder().getUser();
-//        User foundFileUser = foundFile.getUser();
+
         Folder foundFolder = DBFolder.find(folder2.getId());
         User foundFolderUser = foundFolder.getUser();
 

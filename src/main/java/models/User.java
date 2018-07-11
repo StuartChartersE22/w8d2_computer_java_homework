@@ -1,11 +1,13 @@
 package models;
 
+import db.IDB;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Table(name = "users")
-public class User {
+public class User implements IDB {
 
     private int id;
     private String name;

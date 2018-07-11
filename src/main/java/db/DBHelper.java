@@ -145,4 +145,21 @@ public abstract class DBHelper {
         }
         return average;
     }
+
+    protected static <OBJECT, ASSOCIATION extends IDB> List<OBJECT> getAssociationsForAnObject(OBJECT object, ASSOCIATION associationObject, Class<ASSOCIATION> associationClass, String associationRelationshipParameter){
+        List<OBJECT> results = null;
+        session = HibernateUtil.getSessionFactory().openSession();
+
+        try {
+            Criteria cr = session.createCriteria(associationClass);
+            cr.createAlias(associationRelationshipParameter, "single_object");
+            cr.add(Restrictions.eq("single_object.id", associationObject.getId()));
+            results = cr.list();
+        }catch (HibernateException e){
+            e.printStackTrace();
+        }finally {
+            session.close();
+        }
+        return results;
+    }
 }

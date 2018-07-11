@@ -1,11 +1,13 @@
 package models;
 
+import db.IDB;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Table(name = "folders")
-public class Folder {
+public class Folder implements IDB {
 
     private int id;
     private String name;
